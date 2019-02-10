@@ -28,12 +28,16 @@ data$Voltage<- as.numeric(data$Voltage)
 data$DateTime <- strptime(paste(data$Date, data$Time), "%Y-%m-%d %H:%M:%S")
 
 ################################################################################
+# plot to png-file
+png("plot4.png", width=480, height=480) 
+
 #arrange layout 2x2
 par(mfrow = c(2,2))
 
+
 # make plot4.1 
 plot(data$DateTime, y= data$Global_active_power,    # load variables of interest
-     type = "S",                                    # set type to line graph
+     type = "l",                                    # set type to line graph
      xlab = "",                                     # set names x-Axis
      ylab = "Global Active Power"                   # set name y-Axis
      
@@ -41,23 +45,23 @@ plot(data$DateTime, y= data$Global_active_power,    # load variables of interest
 
 # make plot4.2
 plot(data$DateTime, y= data$Voltage,                # load variables of interest
-     type = "S",                                    # set type to line graph
+     type = "l",                                    # set type to line graph
      xlab = "datetime",                             # set names x-Axis
      ylab = "Voltage"                               # set name y-Axis
 )
 
 # make plot4.3
 plot(data$DateTime, y= data$Sub_metering_1,         # load variables of interest
-     type = "S",                                    # set type to line graph
+     type = "l",                                    # set type to line graph
      xlab = "",                                     # set names x-Axis
      ylab = "Energy sub metering"                   # set name y-Axis
 )
 points(data$DateTime, y= data$Sub_metering_2,       # load variables for second layer
-       type = "S",                                  # set type to line graph
+       type = "l",                                  # set type to line graph
        col = "red"                                  # set color to red
 )                              
 points(data$DateTime, y= data$Sub_metering_3,       # load variables for third layer
-       type = "S",                                  # set type to line graph
+       type = "l",                                  # set type to line graph
        col = "blue"                                 # set color to blue
 )
 legend("topright", lty=1, #pch = "-",  
@@ -68,12 +72,10 @@ legend("topright", lty=1, #pch = "-",
 
 # make plot4.4
 plot(data$DateTime, y= data$Global_reactive_power,  # load variables of interest
-     type = "S",                                    # set type to line graph
+     type = "l",                                    # set type to line graph
      xlab = "datetime",                             # set names x-Axis
      ylab = "Global_reactive_power"                 # set name y-Axis
 )
 
-################################################################################
-# save plot from screen to png-file
-dev.copy(png, file = "plot4.png") 
 dev.off()
+################################################################################

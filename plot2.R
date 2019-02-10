@@ -23,15 +23,17 @@ data$Global_active_power <- as.numeric(data$Global_active_power)
 data$DateTime <- strptime(paste(data$Date, data$Time), "%Y-%m-%d %H:%M:%S")
 
 ################################################################################
+# plot to png-file
+png("plot2.png", width=480, height=480) 
+
 # make plot1 
 plot(data$DateTime, y= data$Global_active_power,      # load variables of interest
-     type = "S",                                      # set type to line graph
+     type = "l",                                      # set type to line graph
      xlab = "",                                       # set names x-Axis
      ylab = "Global Active Power (kilowatts)"         # set name y-Axis
 
 )
 
-################################################################################
-# save plot from screen to png-file
-dev.copy(png, file = "plot2.png") 
 dev.off()
+################################################################################
+

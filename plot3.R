@@ -27,18 +27,21 @@ data$DateTime <- strptime(paste(data$Date, data$Time), "%Y-%m-%d %H:%M:%S")
 
 
 ################################################################################
+# plot to png-file
+png("plot3.png", width=480, height=480) 
+
 # make plot1 
 plot(data$DateTime, y= data$Sub_metering_1,    # load variables of interest
-     type = "S",                               # set type to line graph
+     type = "l",                               # set type to line graph
      xlab = "",                                # set names x-Axis
      ylab = "Energy sub metering"              # set name y-Axis
      )
 points(data$DateTime, y= data$Sub_metering_2,  # load variables for second layer
-     type = "S",                               # set type to line graph
+     type = "l",                               # set type to line graph
      col = "red"                               # set color to red
      )                              
 points(data$DateTime, y= data$Sub_metering_3,  # load variables for third layer
-       type = "S",                             # set type to line graph
+       type = "l",                             # set type to line graph
        col = "blue"                            # set color to blue
        )
 legend("topright", lty=1, #pch = "-",  
@@ -46,8 +49,5 @@ legend("topright", lty=1, #pch = "-",
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
        )
 
-
-################################################################################
-# save plot from screen to png-file
-dev.copy(png, file = "plot3.png") 
 dev.off()
+################################################################################
