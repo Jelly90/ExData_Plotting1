@@ -20,6 +20,9 @@ data <- filter(data, data$Date == "2007-02-01" |  data$Date == "2007-02-02")
 data$Global_active_power <- as.numeric(data$Global_active_power)
 
 ################################################################################
+# plot to png-file
+png("plot1.png", width=480, height=480) 
+
 # make plot1 
 hist(data$Global_active_power,                  # load variable of interest
      col = "red",                               # set fill color of bars = red        
@@ -28,7 +31,6 @@ hist(data$Global_active_power,                  # load variable of interest
      main = "Global Active Power"               # set name plot
      )
 
-################################################################################
-# save plot from screen to png-file
-dev.copy(png, file = "plot1.png") 
 dev.off()
+################################################################################
+
